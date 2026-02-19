@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biz Haqimizda - MODAUZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            background-color: var(--white);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1.5px;
+        }
+
+        .page-hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .about-content {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .about-text h2 span {
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .about-image img {
+            border-radius: 40px;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--border);
+        }
+
+        .values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            background: var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2>Savatingiz</h2>
+            <button class="close-cart" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items">
+            <!-- Dynamic Cart Items -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Jami:</span>
+                <span id="cartTotal">0 UZS</span>
+            </div>
+            <button class="btn checkout-btn">Rasmiylashtirish</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-shirt"></i> MODA<span>UZ</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Bosh sahifa</a></li>
+                    <li><a href="shop.html">Do'kon</a></li>
+                    <li><a href="about.html" class="active">Biz haqimizda</a></li>
+                    <li><a href="contact.html">Aloqa</a></li>
+                </ul>
+                <div class="nav-toggle" id="navToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="nav-icons" style="display: flex; gap: 1rem; align-items: center;">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <div class="lang-switcher" style="display: flex; gap: 5px; align-items: center;">
+                        <a href="about.html" class="lang-link active"
+                            style="font-weight: 700; color: var(--text-dark);">UZ</a>
+                        <span style="color: var(--border);">|</span>
+                        <a href="#" class="lang-link"
+                            style="color: var(--text-light); transition: var(--transition);">RU</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Biz <span>Haqimizda</span></h1>
+            <p>Sifat, uslub va mijozlarimiz shodligi bizning asosiy maqsadimiz</p>
+        </div>
+    </div>
+
+    <section class="about-content reveal">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Do'kon interyeri">
+                </div>
+                <div class="about-text">
+                    <h2>Bizning <span>Tariximiz</span></h2>
+                    <p>MODAUZ 2020-yilda tashkil etilgan bo'lib, o'z oldiga O'zbekiston aholisiga zamonaviy va sifatli
+                        kiyimlarni hamyonbop narxlarda taqdim etishni maqsad qilib qo'ygan.</p>
+                    <p>Biz faqat eng yaxshi matolar va zamonaviy dizaynlardan foydalanamiz. Har bir mijoz biz uchun
+                        qadrlidir va biz sizning uslubingizni topishingizga yordam berishdan xursandmiz.</p>
+
+                    <h2>Bizning <span>Qadriyatlarimiz</span></h2>
+                    <div class="values-list">
+                        <div class="value-item"><i class="fa-solid fa-star"></i> Yuqori sifat</div>
+                        <div class="value-item"><i class="fa-solid fa-heart"></i> Mijoz mamnuniyati</div>
+                        <div class="value-item"><i class="fa-solid fa-rocket"></i> Doimiy rivojlanish</div>
+                        <div class="value-item"><i class="fa-solid fa-shield-halved"></i> Halollik</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>MODA<span>UZ</span></h3>
+                    <p>Bizning maqsadimiz - har bir mijozga o'ziga xos, zamonaviy va qulay kiyimlarni taqdim etishdir.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Tezkor Havolalar</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Bosh sahifa</a></li>
+                        <li><a href="shop.html">Do'kon</a></li>
+                        <li><a href="about.html">Biz haqimizda</a></li>
+                        <li><a href="contact.html">Aloqa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Bog'lanish</h3>
+                    <p><i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> Toshkent sh.,
+                        Chilonzor tumani</p>
+                    <p><i class="fa-solid fa-phone" style="color: var(--primary-color);"></i> +998 90 123 45 67</p>
+                    <p><i class="fa-solid fa-envelope" style="color: var(--primary-color);"></i> info@modauz.uz</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MODAUZ. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="cartBtn" title="Savatni ko'rish">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count">0</span>
+    </button>
+
+    <button id="backToTop" title="Yuqoriga qaytish">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

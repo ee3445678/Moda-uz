@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - MODAUZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-shirt"></i>
+            <span>MODAUZ</span>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="#" class="menu-item active" data-tab="dashboard">
+                <i class="fa-solid fa-chart-line"></i> Boshqaruv
+            </a>
+            <a href="#" class="menu-item" data-tab="products">
+                <i class="fa-solid fa-box"></i> Mahsulotlar
+            </a>
+            <a href="#" class="menu-item" data-tab="orders">
+                <i class="fa-solid fa-shopping-cart"></i> Buyurtmalar
+            </a>
+            <a href="#" class="menu-item" data-tab="settings">
+                <i class="fa-solid fa-cog"></i> Sozlamalar
+            </a>
+            <hr style="border: none; border-top: 1px solid #334155; margin: 1rem 1.5rem;">
+            <a href="index.html" class="menu-item">
+                <i class="fa-solid fa-door-open"></i> Saytga qaytish
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="page-title">
+                <h1 id="pageTitleText">Boshqaruv Paneli</h1>
+            </div>
+            <div class="user-profile">
+                <button id="sidebarToggle" style="background: none; border: none; font-size: 1.5rem; display: none;">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <span>Admin</span>
+                <img src="https://ui-avatars.com/api/?name=Admin&background=3b82f6&color=fff" alt="User">
+            </div>
+        </header>
+
+        <!-- DASHBOARD TAB -->
+        <div id="dashboard" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #eff6ff; color: #3b82f6;"><i
+                            class="fa-solid fa-dollar-sign"></i></div>
+                    <div class="stat-info">
+                        <p>Bugungi foyda</p>
+                        <h3>2,450,000 UZS</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #ecfdf5; color: #10b981;"><i
+                            class="fa-solid fa-bag-shopping"></i></div>
+                    <div class="stat-info">
+                        <p>Yangi buyurtmalar</p>
+                        <h3>18</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #fef2f2; color: #ef4444;"><i
+                            class="fa-solid fa-users"></i></div>
+                    <div class="stat-info">
+                        <p>Mijozlar</p>
+                        <h3>142</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #fff7ed; color: #f59e0b;"><i class="fa-solid fa-box"></i>
+                    </div>
+                    <div class="stat-info">
+                        <p>Ombor qoldig'i</p>
+                        <h3>846</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-container">
+                <div class="container-header">
+                    <h2>Oxirgi sotuvlar</h2>
+                    <a href="#" style="color: var(--admin-accent); font-size: 0.875rem;">Hammasini ko'rish</a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mijoz</th>
+                            <th>Mahsulot</th>
+                            <th>Sana</th>
+                            <th>Narx</th>
+                            <th>Holati</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Abduvali Karimov</td>
+                            <td>Klassik Ko'ylak</td>
+                            <td>2024-05-22</td>
+                            <td>150,000 UZS</td>
+                            <td><span class="badge badge-success">Yetkazildi</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sanjar Aliyev</td>
+                            <td>Sport Krossovka</td>
+                            <td>2024-05-22</td>
+                            <td>350,000 UZS</td>
+                            <td><span class="badge badge-warning">Kutilmoqda</span></td>
+                        </tr>
+                        <tr>
+                            <td>Malika Rahimova</td>
+                            <td>Gulli Ko'ylak</td>
+                            <td>2024-05-21</td>
+                            <td>200,000 UZS</td>
+                            <td><span class="badge badge-success">Yetkazildi</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PRODUCTS TAB -->
+        <div id="products" class="tab-content">
+            <div class="data-container">
+                <div class="container-header">
+                    <h2>Barcha mahsulotlar</h2>
+                    <button class="btn-add">+ Yangi mahsulot</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rasm</th>
+                            <th>Nomi</th>
+                            <th>Kategoriya</th>
+                            <th>Narxi</th>
+                            <th>Qoldiq</th>
+                            <th>Amallar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://images.unsplash.com/photo-1593030761757-71bd90dbe3e4?w=50" width="40"
+                                    style="border-radius: 4px;"></td>
+                            <td>Klassik Ko'ylak</td>
+                            <td>Erkaklar</td>
+                            <td>150,000</td>
+                            <td>24 ta</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="action-btn" style="color:red;"><i
+                                            class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=50" width="40"
+                                    style="border-radius: 4px;"></td>
+                            <td>Sport Krossovka</td>
+                            <td>Poyabzal</td>
+                            <td>350,000</td>
+                            <td>8 ta</td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="action-btn"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="action-btn" style="color:red;"><i
+                                            class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ORDERS TAB -->
+        <div id="orders" class="tab-content">
+            <div class="data-container">
+                <div class="container-header">
+                    <h2>Barcha buyurtmalar</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nomer</th>
+                            <th>Mijoz</th>
+                            <th>Telefon</th>
+                            <th>Umumiy summa</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1040</td>
+                            <td>Jasur Bekov</td>
+                            <td>+998 90 444 55 66</td>
+                            <td>600,000 UZS</td>
+                            <td><span class="badge badge-warning">Tayyorlanmoqda</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

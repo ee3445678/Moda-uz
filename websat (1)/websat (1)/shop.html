@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do'kon - MODAUZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            background-color: var(--white);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1.5px;
+        }
+
+        .page-hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .filter-section {
+            padding: var(--spacing-sm) 0;
+            background-color: var(--white);
+            position: sticky;
+            top: 90px;
+            z-index: 90;
+            backdrop-filter: blur(10px);
+            background-color: var(--glass);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 0.75rem 2rem;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-dark);
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            box-shadow: var(--shadow);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(217, 4, 41, 0.2);
+        }
+
+        .products-section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .step-number {
+            display: inline-flex;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 20px rgba(217, 4, 41, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2>Savatingiz</h2>
+            <button class="close-cart" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items">
+            <!-- Dynamic Cart Items -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Jami:</span>
+                <span id="cartTotal">0 UZS</span>
+            </div>
+            <button class="btn checkout-btn">Rasmiylashtirish</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-shirt"></i> MODA<span>UZ</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Bosh sahifa</a></li>
+                    <li><a href="shop.html" class="active">Do'kon</a></li>
+                    <li><a href="about.html">Biz haqimizda</a></li>
+                    <li><a href="contact.html">Aloqa</a></li>
+                </ul>
+                <div class="nav-toggle" id="navToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="nav-icons" style="display: flex; gap: 1rem; align-items: center;">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <div class="lang-switcher" style="display: flex; gap: 5px; align-items: center;">
+                        <a href="shop.html" class="lang-link active"
+                            style="font-weight: 700; color: var(--text-dark);">UZ</a>
+                        <span style="color: var(--border);">|</span>
+                        <a href="#" class="lang-link"
+                            style="color: var(--text-light); transition: var(--transition);">RU</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Bizning <span>Mahsulotlar</span></h1>
+            <p>Eng so'nggi va zamonaviy kolleksiyalar faqat siz uchun</p>
+        </div>
+    </div>
+
+    <section class="filter-section">
+        <div class="container text-center">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="Mahsulotlarni qidiring (masalan: ko'ylak, shim)...">
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active">Barchasi</button>
+                <button class="filter-btn">Erkaklar</button>
+                <button class="filter-btn">Ayollar</button>
+                <button class="filter-btn">Poyabzal</button>
+                <button class="filter-btn">Aksessuarlar</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section reveal">
+        <div class="container">
+            <div class="products-grid">
+                <!-- Products dynamically rendered -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Buy Section -->
+    <section class="info-section reveal">
+        <div class="container">
+            <h2 class="section-title">Qanday <span>Xarid Qilinadi?</span></h2>
+            <div class="info-grid">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <h3>Mahsulot Tanlang</h3>
+                    <p>O'zingizga yoqqan kiyimni va hajmni tanlang</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <h3>Buyurtma Bering</h3>
+                    <p>Telefon yoki sayt orqali tezkor buyurtma bering</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <h3>Yetkazib Berish</h3>
+                    <p>Mutaxassislarimiz mahsulotni eshigingizgacha yetkazib berishadi</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">4</span>
+                    <h3>To'lov Qiling</h3>
+                    <p>Qulay usulda: naqd yoki karta orqali to'lov qiling</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>MODA<span>UZ</span></h3>
+                    <p>Bizning maqsadimiz - har bir mijozga o'ziga xos, zamonaviy va qulay kiyimlarni taqdim etishdir.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Tezkor Havolalar</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Bosh sahifa</a></li>
+                        <li><a href="shop.html">Do'kon</a></li>
+                        <li><a href="about.html">Biz haqimizda</a></li>
+                        <li><a href="contact.html">Aloqa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Bog'lanish</h3>
+                    <p><i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> Toshkent sh.,
+                        Chilonzor tumani</p>
+                    <p><i class="fa-solid fa-phone" style="color: var(--primary-color);"></i> +998 90 123 45 67</p>
+                    <p><i class="fa-solid fa-envelope" style="color: var(--primary-color);"></i> info@modauz.uz</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MODAUZ. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="cartBtn" title="Savatni ko'rish">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count">0</span>
+    </button>
+
+    <button id="backToTop" title="Yuqoriga qaytish">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

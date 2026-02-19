@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aloqa - MODAUZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            background-color: var(--white);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1.5px;
+        }
+
+        .page-hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .contact-section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-lg);
+            background: var(--white);
+            border-radius: 40px;
+            box-shadow: var(--shadow-hover);
+            padding: var(--spacing-md);
+            border: 1px solid var(--border);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--accent-color);
+            border-radius: 24px;
+            transition: var(--transition);
+        }
+
+        .contact-info-item:hover {
+            transform: translateX(10px);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .contact-info-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-right: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .contact-info-item:hover i {
+            color: var(--white);
+        }
+
+        .contact-info-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 5px rgba(217, 4, 41, 0.05);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 1.25rem 2.5rem;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(217, 4, 41, 0.2);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(217, 4, 41, 0.3);
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2>Savatingiz</h2>
+            <button class="close-cart" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items">
+            <!-- Dynamic Cart Items -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Jami:</span>
+                <span id="cartTotal">0 UZS</span>
+            </div>
+            <button class="btn checkout-btn">Rasmiylashtirish</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-shirt"></i> MODA<span>UZ</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Bosh sahifa</a></li>
+                    <li><a href="shop.html">Do'kon</a></li>
+                    <li><a href="about.html">Biz haqimizda</a></li>
+                    <li><a href="contact.html" class="active">Aloqa</a></li>
+                </ul>
+                <div class="nav-toggle" id="navToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="nav-icons" style="display: flex; gap: 1rem; align-items: center;">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <div class="lang-switcher" style="display: flex; gap: 5px; align-items: center;">
+                        <a href="contact.html" class="lang-link active"
+                            style="font-weight: 700; color: var(--text-dark);">UZ</a>
+                        <span style="color: var(--border);">|</span>
+                        <a href="#" class="lang-link"
+                            style="color: var(--text-light); transition: var(--transition);">RU</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Biz Bilan <span>Bog'laning</span></h1>
+            <p>Savollaringiz bormi? Bizga yozing, biz albatta javob beramiz!</p>
+        </div>
+    </div>
+
+    <section class="contact-section reveal">
+        <div class="container">
+            <div class="contact-container">
+                <!-- Info -->
+                <div class="contact-info">
+                    <h2 style="margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; letter-spacing: -1px;">Aloqa
+                        <span>Ma'lumotlari</span>
+                    </h2>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h3>Manzil</h3>
+                            <p>Toshkent shahar, Chilonzor tumani, Bunyodkor ko'chasi 15-uy</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h3>Telefon</h3>
+                            <p>+998 90 123 45 67</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@modauz.uz</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <h3>Ish Vaqti</h3>
+                            <p>Dushanba - Shanba: 09:00 - 20:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="contact-form">
+                    <h2 style="margin-bottom: 2rem; font-size: 2.5rem; font-weight: 800; letter-spacing: -1px;">Xabar
+                        <span>Yuborish</span>
+                    </h2>
+                    <form action="#" onsubmit="event.preventDefault(); alert('Xabar yuborildi!');">
+                        <div class="form-group">
+                            <label for="name">Ismingiz</label>
+                            <input type="text" id="name" placeholder="Ismingizni kiriting" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Email manzilingiz" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Xabar</label>
+                            <textarea id="message" placeholder="Savol yoki taklifingiz..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Xabarni Yuborish</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>MODA<span>UZ</span></h3>
+                    <p>Bizning maqsadimiz - har bir mijozga o'ziga xos, zamonaviy va qulay kiyimlarni taqdim etishdir.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Tezkor Havolalar</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Bosh sahifa</a></li>
+                        <li><a href="shop.html">Do'kon</a></li>
+                        <li><a href="about.html">Biz haqimizda</a></li>
+                        <li><a href="contact.html">Aloqa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Bog'lanish</h3>
+                    <p><i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> Toshkent sh.,
+                        Chilonzor tumani</p>
+                    <p><i class="fa-solid fa-phone" style="color: var(--primary-color);"></i> +998 90 123 45 67</p>
+                    <p><i class="fa-solid fa-envelope" style="color: var(--primary-color);"></i> info@modauz.uz</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MODAUZ. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="cartBtn" title="Savatni ko'rish">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count">0</span>
+    </button>
+
+    <button id="backToTop" title="Yuqoriga qaytish">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

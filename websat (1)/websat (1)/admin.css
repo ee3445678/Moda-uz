@@ -1,0 +1,316 @@
+:root {
+    --admin-primary: #2b2d42;
+    --admin-secondary: #3d405b;
+    --admin-accent: #d90429;
+    --admin-bg: #f8f9fa;
+    --admin-text-main: #2b2d42;
+    --admin-text-muted: #8d99ae;
+    --admin-white: #ffffff;
+    --admin-border: #edf2f4;
+    --admin-success: #10b981;
+    --admin-warning: #f59e0b;
+    --admin-danger: #ef233c;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.admin-body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--admin-bg);
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background-color: var(--admin-primary);
+    color: var(--admin-white);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-header {
+    padding: 2.5rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    letter-spacing: -0.5px;
+}
+
+.sidebar-header i {
+    color: var(--admin-accent);
+}
+
+.sidebar-menu {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+.menu-item {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #adb5bd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.menu-item i {
+    width: 20px;
+    font-size: 1.1rem;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: rgba(217, 4, 41, 0.1);
+    color: var(--admin-white);
+}
+
+.menu-item.active {
+    border-left: 4px solid var(--admin-accent);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--admin-white);
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 280px;
+    flex: 1;
+    padding: 3rem;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.page-title h1 {
+    font-size: 2rem;
+    color: var(--admin-text-main);
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--admin-white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 100px;
+    box-shadow: var(--shadow);
+}
+
+.user-profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: var(--admin-white);
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.stat-icon.bg-primary {
+    background: rgba(217, 4, 41, 0.1);
+    color: var(--admin-accent);
+}
+
+.stat-icon.bg-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--admin-success);
+}
+
+.stat-icon.bg-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--admin-warning);
+}
+
+.stat-info h3 {
+    font-size: 1.75rem;
+    margin: 0;
+    font-weight: 800;
+}
+
+.stat-info p {
+    color: var(--admin-text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Data Tables */
+.data-container {
+    background: var(--admin-white);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.container-header {
+    padding: 2rem;
+    border-bottom: 1px solid var(--admin-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.btn-add {
+    background-color: var(--admin-accent);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+    background-color: var(--admin-danger);
+    transform: scale(1.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 1.25rem 2rem;
+    background-color: #fcfcfd;
+    color: var(--admin-text-muted);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid var(--admin-border);
+    color: var(--admin-text-main);
+    font-weight: 500;
+}
+
+.badge {
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.badge-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--admin-success);
+}
+
+.badge-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--admin-warning);
+}
+
+.action-btns {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--admin-border);
+    background: none;
+    cursor: pointer;
+    color: var(--admin-text-muted);
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: var(--admin-accent);
+    color: white;
+    border-color: var(--admin-accent);
+}
+
+/* Mobile responsive */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 2rem;
+    }
+}
+
+/* Tab Management */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
